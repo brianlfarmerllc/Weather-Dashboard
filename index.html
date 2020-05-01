@@ -1,75 +1,112 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <title>Farmers Weather Dashboard</title>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!-- Link to css stylesheey -->
-    <link rel="stylesheet" href="style.css">
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-  </head>
-  <body>
-    
-    <main class="container ">
-        <div class="row ml-1 mr-1 justify-content-between">
-          <div class="col-3">
-            image
+<head>
+  <title>Farmers Weather Dashboard</title>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Link to css stylesheey -->
+  <link rel="stylesheet" href="style.css">
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+
+<body>
+  <header class="header">
+    <h1>Farmers Almanac Weather Edition</h1>
+  </header>
+
+  <!-- main content of the page. -->
+  <main>
+
+    </div>
+    <!-- parrent row where the rows for current weather dive and five day forcast div are nested -->
+    <div class="row ml-2 mr-1 mt-1 justify-content-between">
+
+      <!-- div for city search and list of searched cities are shown -->
+      <div class="col-3 pt-4 justify-self-around">
+        <!-- form for input of city and state. -->
+        <form>
+          <div class="form-group">
+            <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Enter: City, State">
           </div>
-      
-          <div class="col mr-1 justify-content-between">
-            <div class="jumbotron jumbotron-fluid">
-                <div class="container">
-                  <h1 class="display-3">Fluid jumbotron</h1>
-                  <p class="lead">This is a modified jumbotron that occupies
-                                  the entire horizontal space of its parent.</p>
-                </div>
+        </form>
+        <!-- submit button for the search form -->
+        <button type="button" id="searchButton" class="btn btn-primary">Search</button>
+
+        <ul class="list-group mt-3">
+          <li class="list-group-item">Morbi leo risus</li>
+          <li class="list-group-item">Porta ac consectetur ac</li>
+          <li class="list-group-item">Vestibulum at eros</li>
+        </ul>
+
+      </div>
+
+      <div class="col ml-4 mr-2 justify-content-between">
+        <!-- top row where the current weather is generated -->
+        <div class="row mb-3" id="currentWeather" style="background-color: blue;">
+          <div>
+            <h1 class="display-4">Fluid jumbotron</h1>
+            <p class="lead">This is a modified jumbotron that occupies
+              the entire horizontal space of its parent.</p>
+          </div>
+        </div>
+        <!-- bottom row where the card deck is generated for 5 day forcast.-->
+        <div class="row">
+          <!-- card deck to hold the 5 cards -->
+          <div class="card-deck" id="fiveDay">
+            <div class="card">
+              <div class="card-body">
+                <h4 class="card-title">Card title</h4>
+                <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
               </div>
-            <div class="row">
-                <div class="card-deck">
-                    <div class="card">
-                      <div class="card-body">
-                        <h4 class="card-title">Card title</h4>
-                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                      </div>
-                    </div>
-                    <div class="card">
-                      <div class="card-body">
-                        <h4 class="card-title">Card title</h4>
-                        <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
-                      </div>
-                    </div>
-                    <div class="card">
-                      <div class="card-body">
-                        <h4 class="card-title">Card title</h4>
-                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
-                      </div>
-                    </div>
-                    <div class="card">
-                        <div class="card-body">
-                          <h4 class="card-title">Card title</h4>
-                          <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
-                        </div>
-                      </div>
-                      <div class="card">
-                        <div class="card-body">
-                          <h4 class="card-title">Card title</h4>
-                          <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
-                        </div>
-                      </div>
-                  </div>
+            </div>
+            <div class="card">
+              <div class="card-body">
+                <h4 class="card-title">Card title</h4>
+                <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+              </div>
+            </div>
+            <div class="card">
+              <div class="card-body">
+                <h4 class="card-title">Card title</h4>
+                <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+              </div>
+            </div>
+            <div class="card">
+              <div class="card-body">
+                <h4 class="card-title">Card title</h4>
+                <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+              </div>
+            </div>
+            <div class="card">
+              <div class="card-body">
+                <h4 class="card-title">Card title</h4>
+                <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+              </div>
             </div>
           </div>
-      
         </div>
-    </main>
-      
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-  </body>
+
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
+</body>
+
 </html>

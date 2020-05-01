@@ -1,7 +1,13 @@
-body {
-    margin: 0 auto
+header {
+    background-color: rgba(0, 0, 0, 0.767);
+    padding: 0.5em;
 }
-main {
-    margin: 0 auto;
-    width: 100%;
+header h1{
+    color:white;
+    text-align: center;
 }
+ul {
+    
+
+}
+

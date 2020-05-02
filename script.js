@@ -1,5 +1,5 @@
 // variable to hold the list of cities in search
-var currentDate = moment().format('l');
+var currentDate = moment().format("dddd MMM Do");
 var savedCitiesList;
 if (localStorage.savedCitiesList === undefined) {
     savedCitiesList = [];
@@ -49,27 +49,52 @@ function clearCityStateList(event) {
 function weatherForcast(newCity) {
     apiKey = "cc62b6c835bfbb5dca22c27c9a6e7024";
     queryUrlCurrent = "https://api.openweathermap.org/data/2.5/weather?q=" + newCity + "&appid=" + apiKey
-    console.log(queryUrl);
+    queryUrlForcast = "https://api.openweathermap.org/data/2.5/forecast?q=" + newCity + "&appid=" + apiKey
+    
 
     $.ajax({
         url: queryUrlCurrent,
         method: "GET",
     }).then(function (response) {
-        $("#currentWeather").empty()
+        $("#currentWeather").empty();
         var iconCode = (response.weather[0].icon);
         var iconurl = "http://openweathermap.org/img/w/" + iconCode + ".png";
 
         var currentWeatherData = $(
             `<div>
-        <h1>${response.name + " " + currentDate} <img src="${iconurl}"> <h1> 
+        <h2>${response.name + " - " + currentDate} <img src="${iconurl}"> </h2> 
         <p>${"Temperature: " + (Math.floor((response.main.temp - 273.15) * 1.80 + 32)) + "°F"}<p> 
         <p>${"Humidity: " + response.main.humidity + "%"}<p> 
         <p>${"Wind Speed: " + response.wind.speed + " MPH"}<p> 
         <p>${"UV Index: "}<p> 
             </div>`
-        )
+        );
 
-        $("#currentWeather").append(currentWeatherData)
+        $("#currentWeather").append(currentWeatherData);
+    })
+
+    $.ajax({
+        url: queryUrlForcast,
+        method: "GET",
+    }).then(function(response){
+        console.log(response);
+        $("#fiveDay").empty();
+        for (let i = 0; i < response.list.length; i++) {
+            if (response.list[i].dt_txt.indexOf("15:00:00") !== -1) {
+                var newCard = $("<div>").attr("class", "card");
+                newCard.append($("<h3>").text(moment(response.list[i].dt, "X").format("MMM Do")));
+                newCard.append($("<img>").attr("src", "https://openweathermap.org/img/w/" + response.list[i].weather[0].icon + ".png"));
+                newCard.append($("<p>").attr("class", "card-text").html("Temp: " + (Math.floor((response.list[i].main.temp - 273.15) * 1.80 + 32)) + "°F"));
+                newCard.append($("<p>").attr("class", "card-text").text("Humidity: " + response.list[i].main.humidity + "%"));
+
+                $("#fiveDay").append(newCard);
+                
+            }
+            
+            
+        }
+        
+        
     })
 
 }

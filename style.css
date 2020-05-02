@@ -1,8 +1,5 @@
-body {
-    background-color: rgb(67, 179, 179);
-}
 header {
-    background-color: rgba(0, 0, 0, 0.767);
+    background-color: dodgerblue;
     padding: 0.5em;
 }
 
@@ -10,21 +7,37 @@ header h1{
     color:white;
     text-align: center;
 }
-
-.card{
-    padding: 1em;
-}
-#currentWeather {
+h2{
     background-color: dodgerblue;
-    padding: 1.25em;
-    border-radius: 10px;
 }
-#currentWeather h1 {
-    margin-bottom: 0.5em;
+.card-deck .card{
+    padding: 1em;
+    width: 10em;
+    height:15em;
+}
+.card-deck .card img {
+    height: 4em;
+    width: 4em;
+}
+
+.card {
+    color: dodgerblue;
 }
 
 #currentWeather p {
     font-size: 20px;
-    color: white;
+    background-color: white;
+    margin-left: 0.25em;
+}
+#currentWeather h2{
+    background-color: dodgerblue;
+    padding-left: 0.25em;
+    border-radius: 10px;
+    margin-top: .51em
+}
+
+#currentWeather img {
+    height: 2.5em;
+    width: 2.5em;
 }
 

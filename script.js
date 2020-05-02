@@ -50,7 +50,7 @@ function weatherForcast(newCity) {
     apiKey = "cc62b6c835bfbb5dca22c27c9a6e7024";
     queryUrlCurrent = "https://api.openweathermap.org/data/2.5/weather?q=" + newCity + "&appid=" + apiKey
     queryUrlForcast = "https://api.openweathermap.org/data/2.5/forecast?q=" + newCity + "&appid=" + apiKey
-    
+    var uvindex;
 
     $.ajax({
         url: queryUrlCurrent,
@@ -66,11 +66,21 @@ function weatherForcast(newCity) {
         <p>${"Temperature: " + (Math.floor((response.main.temp - 273.15) * 1.80 + 32)) + "°F"}<p> 
         <p>${"Humidity: " + response.main.humidity + "%"}<p> 
         <p>${"Wind Speed: " + response.wind.speed + " MPH"}<p> 
-        <p>${"UV Index: "}<p> 
             </div>`
         );
-
         $("#currentWeather").append(currentWeatherData);
+       
+
+        var uvURL = "https://api.openweathermap.org/data/2.5/uvi?appid=" + apiKey + "&lat=" + response.coord.lat + "&lon=" + response.coord.lat;
+        $.ajax({
+            url: uvURL,
+            method: "GET"
+        }).then(function (uvresponse) {
+            console.log(uvresponse)
+            uvIndex = $("<p>").text("UV Index: " + uvresponse.value );
+            $(currentWeatherData).append(uvIndex);
+
+        });
     })
 
     $.ajax({
@@ -88,13 +98,8 @@ function weatherForcast(newCity) {
                 newCard.append($("<p>").attr("class", "card-text").text("Humidity: " + response.list[i].main.humidity + "%"));
 
                 $("#fiveDay").append(newCard);
-                
             }
-            
-            
         }
-        
-        
     })
 
 }
@@ -103,6 +108,7 @@ function weatherForcast(newCity) {
 
 // event listeners 
 // $("#searchButton").on("click", weatherForcast)
+// $("#cityStateList").on("click", previousCities)
 $("#searchButton").on("click", searchAndSave)
 $("#clearSearch").on("click", clearCityStateList)
 

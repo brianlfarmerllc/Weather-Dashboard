@@ -6,14 +6,24 @@ header {
 header h1{
     color:white;
     text-align: center;
+    font-size: 60px;
 }
+
+header img {
+    width:1.5em;
+    height:1.5em;
+}
+
 h2{
     background-color: dodgerblue;
 }
+li {
+    text-align: center;
+}
 .card-deck .card{
     padding: 1em;
-    width: 10em;
-    height:15em;
+    width: 12em;
+    
 }
 .card-deck .card img {
     height: 4em;

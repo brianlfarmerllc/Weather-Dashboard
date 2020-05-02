@@ -75,6 +75,16 @@ function weatherForcast(newCity) {
         <p>${"Wind Speed: " + response.wind.speed + " MPH"}<p> 
             </div>`
         );
+        // replace header with text and Icon's
+        $("#header").empty();
+        var headerh1 = $("<h1>").attr("id", "headerH1").text("Farmer's Almanac - Weather Edition");
+        $("#header").append(headerh1);
+        var headerImg = $("<img>").attr("src", iconurl);
+        $("#headerH1").append(headerImg);
+        var headerImg2 = $("<img>").attr("src", iconurl);
+        $("#headerH1").prepend(headerImg2);
+
+
         // appends current weather data to the page
         $("#currentWeather").append(currentWeatherData);
 

@@ -27,20 +27,24 @@
     <div class="row ml-2 mr-1 mt-1 justify-content-between">
 
       <!-- div for city search and list of searched cities are shown -->
-      <div class="col-3 pt-4 justify-self-around">
+      <div class="col-3 pt-4">
         <!-- form for input of city and state. -->
         <form id="searchForm">
           <div class="form-group">
             <input type="text" class="form-control" id="cityStateInput" placeholder="Enter: City, State">
           </div>
+
           <!-- submit button for the search form -->
-          <button type="button" id="searchButton" class="btn btn-primary">Get Weather</button>
+          <div class="row justify-content-around">
+            <button type="button" id="searchButton" class="btn btn-primary">Get Weather</button>
+            <button type="button" id="clearSearch" class="btn btn-primary">Clear History</button>
+          </div>
         </form>
+
         <!-- where list items will be added from search -->
         <ul class="list-group mt-3" id="cityStateList">
 
         </ul>
-
       </div>
 
       <div class="col ml-4 mr-2 justify-content-between">

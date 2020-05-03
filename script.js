@@ -1,6 +1,6 @@
 // moment current date format
 var currentDate = moment().format("dddd MMM Do");
-
+var yyyymmdd = moment().format("yyyy-MM-DD")
 // variable to hold the list of cities in search
 var savedCitiesList;
 if (localStorage.savedCitiesList === undefined) {
@@ -114,16 +114,17 @@ function weatherForcast(newCity) {
     $.ajax({
         url: queryUrlForcast,
         method: "GET",
-    }).then(function (response) {
+    }).then(function (forecastResponse) {
+        console.log(forecastResponse)
         // sets card deck div to blank status before generating 5 day forcast cards
         $("#fiveDay").empty();
-        for (let i = 0; i < response.list.length; i++) {
-            if (response.list[i].dt_txt.indexOf("15:00:00") !== -1) {
+        for (let i = 0; i < forecastResponse.list.length; i++) {
+            if (forecastResponse.list[i].dt_txt.indexOf(yyyymmdd) !== 0 && forecastResponse.list[i].dt_txt.indexOf("12:00:00") !== -1) {
                 var newCard = $("<div>").attr("class", "card");
-                newCard.append($("<h3>").text(moment(response.list[i].dt, "X").format("MMM Do")));
-                newCard.append($("<img>").attr("src", "https://openweathermap.org/img/w/" + response.list[i].weather[0].icon + ".png"));
-                newCard.append($("<p>").attr("class", "card-text").html("Temp: " + (Math.floor((response.list[i].main.temp - 273.15) * 1.80 + 32)) + "°F"));
-                newCard.append($("<p>").attr("class", "card-text").text("Humidity: " + response.list[i].main.humidity + "%"));
+                newCard.append($("<h3>").text(moment(forecastResponse.list[i].dt, "X").format("MMM Do")));
+                newCard.append($("<img>").attr("src", "https://openweathermap.org/img/w/" + forecastResponse.list[i].weather[0].icon + ".png"));
+                newCard.append($("<p>").attr("class", "card-text").html("Temp: " + (Math.floor((forecastResponse.list[i].main.temp - 273.15) * 1.80 + 32)) + "°F"));
+                newCard.append($("<p>").attr("class", "card-text").text("Humidity: " + forecastResponse.list[i].main.humidity + "%"));
 
                 $("#fiveDay").append(newCard);
             }

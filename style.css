@@ -1,3 +1,4 @@
+/* css using element selectors */
 header {
     background-color: dodgerblue;
     padding: 0.5em;
@@ -20,6 +21,7 @@ h2{
 li {
     text-align: center;
 }
+/* css using class selectors */
 .card-deck .card{
     padding: 1em;
     width: 12em;
@@ -34,6 +36,23 @@ li {
     color: dodgerblue;
 }
 
+.low {
+    color: green;
+}
+.moderate {
+    color: yellow;
+}
+.high {
+    color: orange;
+}
+.veryHigh {
+    color: red;
+}
+.extreme {
+    color: violet;
+}
+
+/* css using id selectors */
 #currentWeather p {
     font-size: 20px;
     background-color: white;

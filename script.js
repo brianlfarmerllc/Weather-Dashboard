@@ -9,9 +9,6 @@ if (localStorage.savedCitiesList === undefined) {
     savedCitiesList = JSON.parse(window.localStorage.savedCitiesList);
 }
 
-// creating global variable for new city
-// var newCity
-
 // This function handles the event of adding a city to the savedCitiesList array and calls for a current weather and 5 day forcast
 function searchAndSave(event) {
     if ($("#cityStateInput").val() !== "") {
@@ -93,10 +90,24 @@ function weatherForcast(newCity) {
         $.ajax({
             url: uvURL,
             method: "GET"
-        }).then(function (uvresponse) {
+        }).then(function (uvResponse) {
             // creates p element with uv data and appends it to current weather data div thats already appended to page
-            uvIndex = $("<p>").text("UV Index: " + uvresponse.value);
+            uvIndex = $("<p>").attr("id", "uvIndexValue").text("UV Index: " + uvResponse.value);
             $(currentWeatherData).append(uvIndex);
+            
+            if (uvResponse.value < 3) {
+                $("#uvIndexValue").addClass("low")
+            } else if (uvResponse.value > 3 && uvResponse.value < 6){
+                $("#uvIndexValue").addClass("moderate")
+            } else if (uvResponse.value > 6 && uvResponse.value < 8){
+                $("#uvIndexValue").addClass("high")
+            } else if (uvResponse.value > 8 && uvResponse.value < 11){
+                $("#uvIndexValue").addClass("veryHigh")
+            } else {
+                $("#uvIndexValue").addClass("extreme")
+            }
+
+
         });
     })
     // ajax call for future forecast
@@ -134,4 +145,6 @@ function previousCities(event){
 $("#cityStateList").on("click", previousCities)
 $("#searchButton").on("click", searchAndSave)
 $("#clearSearch").on("click", clearCityStateList)
+
+
 

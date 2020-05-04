@@ -11,8 +11,9 @@ if (localStorage.savedCitiesList === undefined) {
 
 // This function handles the event of adding a city to the savedCitiesList array and calls for a current weather and 5 day forcast
 function searchAndSave(event) {
+    event.preventDefault();
+    
     if ($("#cityStateInput").val() !== "") {
-        event.preventDefault();
         newCity = $("#cityStateInput").val().trim();
         savedCitiesList.push(newCity);
         localStorage.setItem("savedCitiesList", JSON.stringify(savedCitiesList));

@@ -1,6 +1,6 @@
 // moment current date format
 var currentDate = moment().format("dddd MMM Do");
-var yyyymmdd = moment().format("yyyy-MM-DD")
+var yyyymmdd = moment().format("yyyy-MM-DD");
 // variable to hold the list of cities in search
 var savedCitiesList;
 if (localStorage.savedCitiesList === undefined) {
@@ -12,9 +12,9 @@ if (localStorage.savedCitiesList === undefined) {
 // This function handles the event of adding a city to the savedCitiesList array and calls for a current weather and 5 day forcast
 function searchAndSave(event) {
     event.preventDefault();
-    
-    if ($("#cityStateInput").val() !== "") {
-        newCity = $("#cityStateInput").val().trim();
+    newCity = $("#cityStateInput").val().trim();
+
+    if ($("#cityStateInput").val() !== "" && savedCitiesList.indexOf(newCity) === -1) {
         savedCitiesList.push(newCity);
         localStorage.setItem("savedCitiesList", JSON.stringify(savedCitiesList));
         createCitiesStateList();
@@ -32,6 +32,7 @@ function createCitiesStateList() {
         $("#cityStateList").prepend(li);
     }
 }
+//}
 // call function to create list of searched city, state if they exist in local storage
 createCitiesStateList()
 

@@ -122,7 +122,7 @@ function weatherForcast(newCity) {
         $("#fiveDay").empty();
         for (let i = 0; i < forecastResponse.list.length; i++) {
             if (forecastResponse.list[i].dt_txt.indexOf(yyyymmdd) !== 0 && forecastResponse.list[i].dt_txt.indexOf("12:00:00") !== -1) {
-                var newCard = $("<div>").attr("class", "card");
+                var newCard = $("<div>").attr("class", "col-5 col-lg-3 col-xl-2 card mt-3");
                 newCard.append($("<h3>").text(moment(forecastResponse.list[i].dt, "X").format("MMM Do")));
                 newCard.append($("<img>").attr("src", "https://openweathermap.org/img/w/" + forecastResponse.list[i].weather[0].icon + ".png"));
                 newCard.append($("<p>").attr("class", "card-text").html("Temp: " + (Math.floor((forecastResponse.list[i].main.temp - 273.15) * 1.80 + 32)) + "°F"));
@@ -139,8 +139,6 @@ function previousCities(event){
     event.preventDefault();
     var newCity =event.target.textContent;
     weatherForcast(newCity);
-
-
 };
 
 
